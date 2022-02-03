@@ -3,8 +3,6 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import appConfig from '../config.json';
 
-
-
 function Titulo(props) {
   const Tag = props.tag || 'h1';
   return (
@@ -34,12 +32,10 @@ function Titulo(props) {
 // }
 // export default HomePage
 
-
 export default function PaginaInicial() {
-  //const username = 'rafaelqueiroz88'; //pode add nome do github aqui para trocar a foto
-  const [username,setUsername] = React.useState('MasterPCFull');
+  // const username = 'omariosouto';
+  const [username, setUsername] = React.useState('omariosouto');
   const roteamento = useRouter();
- 
 
   return (
     <>
@@ -72,9 +68,10 @@ export default function PaginaInicial() {
             onSubmit={function (infosDoEvento) {
               infosDoEvento.preventDefault();
               console.log('Alguém submeteu o form');
-              roteamento.push('/chat');
+              // roteamento.push('/chat?username=' + username);
+              roteamento.push(`/chat?username=${username}`);
+              // window.location.href = '/chat';
             }}
-              
             styleSheet={{
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
               width: { xs: '100%', sm: '50%' }, textAlign: 'center', marginBottom: '32px',
@@ -84,31 +81,29 @@ export default function PaginaInicial() {
             <Text variant="body3" styleSheet={{ marginBottom: '32px', color: appConfig.theme.colors.neutrals[300] }}>
               {appConfig.name}
             </Text>
-            
+
             {/* <input
-            type="text"
-            value={username}
-            onChange={function (event){
-              console.log('usuario digi', event.terget.value);
-              //onde ta o valor?
-              const valor = event.target.value;
-              //Troca o valor da variavel
-              //Atraz doReact e avise quem precisa
-              setUsername(valor);
-            }}
-            /> */}
-
+                            type="text"
+                            value={username}
+                            onChange={function (event) {
+                                console.log('usuario digitou', event.target.value);
+                                // Onde ta o valor?
+                                const valor = event.target.value;
+                                // Trocar o valor da variavel
+                                // através do React e avise quem precisa
+                                setUsername(valor);
+                            }}
+                        /> */}
             <TextField
-             value={username}
-             onChange={function (event) {
-             console.log('usuario digitou', event.target.value);
-               // Onde ta o valor?
-               const valor = event.target.value;
-               // Trocar o valor da variavel
-               // através do React e avise quem precisa
-               setUsername(valor);
-             }}  
-
+              value={username}
+              onChange={function (event) {
+                console.log('usuario digitou', event.target.value);
+                // Onde ta o valor?
+                const valor = event.target.value;
+                // Trocar o valor da variavel
+                // através do React e avise quem precisa
+                setUsername(valor);
+              }}
               fullWidth
               textFieldColors={{
                 neutral: {
@@ -119,7 +114,6 @@ export default function PaginaInicial() {
                 },
               }}
             />
-
             <Button
               type='submit'
               label='Entrar'
@@ -176,3 +170,7 @@ export default function PaginaInicial() {
     </>
   );
 }
+<> © 2022 GitHub, Inc.
+Terms
+Privacy
+S </>
